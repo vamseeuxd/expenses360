@@ -6,9 +6,22 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 'Ionic 6.2 Angular ' + VERSION.major;
+  public data = [
+    'Amsterdam',
+    'Buenos Aires',
+    'Cairo',
+    'Geneva',
+    'Hong Kong',
+    'Istanbul',
+    'London',
+    'Madrid',
+    'New York',
+    'Panama City',
+  ];
+  public results = [...this.data];
 
-  constructor() {}
-
-  ionViewDidEnter() {}
+  handleInput(event) {
+    const query = event.target.value.toLowerCase();
+    this.results = this.data.filter((d) => d.toLowerCase().indexOf(query) > -1);
+  }
 }
